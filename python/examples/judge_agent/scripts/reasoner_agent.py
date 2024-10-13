@@ -28,7 +28,7 @@ class Operator:
                                             "1, "+ inputs.get('log_step_name', "Step_one"): {task:agent_result}})
                 '''
                 record_agent_result_log(agent_config=inputs, agent_result={"Evaluation": agent_result})
-                send_output("reasoner_results", pa.array([create_agent_output(step_name='keyword_results', output_data=agent_result,dataflow_status=os.getenv('IS_DATAFLOW_END',True))]),dora_event['metadata'])
-                print('reasoner_results:', agent_result)
+                send_output("planning_results", pa.array([create_agent_output(step_name='keyword_results', output_data=agent_result,dataflow_status=os.getenv('IS_DATAFLOW_END',True))]),dora_event['metadata'])
+                print('planning_results:', agent_result)
 
         return DoraStatus.CONTINUE

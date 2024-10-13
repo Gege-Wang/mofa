@@ -29,6 +29,6 @@ class Operator:
 
             print('task:', task)
             print('agent_response:', agent_response)
-            send_output("resolve_result", pa.array([task, agent_response]), dora_event['metadata'])
+            send_output("resolve_results", pa.array([task, agent_response]), dora_event['metadata'])
 
         return DoraStatus.CONTINUE

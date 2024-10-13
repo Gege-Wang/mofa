@@ -45,12 +45,12 @@ class Operator:
                                         agent_result={
                                             "1, "+ inputs.get('log_step_name', "Step_one"): {self.task:agent_result}})
                 send_output("compare_results", pa.array([create_agent_output(step_name='keyword_results', output_data=agent_result,dataflow_status=os.getenv('IS_DATAFLOW_END',True))]),dora_event['metadata'])
-                print('Received Answer Resolved:', self.answer_1)
-                print('Received Answer Base:', self.answer_2)
+                print('Received Answer Resolved:', self.answer_resolve)
+                print('Received Answer Base:', self.answer_base)
                 print('Compare Result:', agent_result)
 
-                self.answer_1 = None
-                self.answer_2 = None
+                self.answer_resolve = None
+                self.answer_base = None
                 self.task = None
 
 

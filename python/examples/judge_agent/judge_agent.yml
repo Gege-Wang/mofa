@@ -1,9 +1,13 @@
 nodes:
   - id: read_input
-    build: pip install -e ../../node-hub/read_input
-    path: read_input
-    outputs:
-      - resolve_results
+    # build: pip install -e ../../node-hub/read_input
+    # path: read_input
+    operator:
+      python: scripts/read_input2.py
+      inputs:
+        tick: dora/timer/millis/200
+      outputs:
+        - resolve_results
 
   - id: judge-agent
     operator:
