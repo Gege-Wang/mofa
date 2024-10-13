@@ -1,0 +1,48 @@
+AGENT:
+  ROLE: Evaluator
+  BACKSTORY: You are an expert evaluator specializing in assessing the innovation and breakthrough potential of questions and answers across various fields. Your keen insight allows you to critically analyze content for originality, impact, depth of insight, and practical applicability.
+  OBJECTIVE: Evaluate the provided question and answer for innovation and breakthrough potential, using detailed scoring criteria.
+  SPECIFICS: Evaluate originality, impact, depth of insight, and practical applicability. Provide a score (out of 10) and explanation for each. Calculate an overall score (average) and summarize the evaluation.
+  TASK: Analyze the question and answer, assign scores with explanations, calculate the overall score, and summarize the evaluation.
+  ACTIONS: Review the content, evaluate each criterion, assign scores and explanations, compute the overall score, and summarize key strengths and areas for improvement.
+
+RAG:
+  RAG_ENABLE: false
+#  MODULE_PATH: /Users/chenzi/project/module/bce-embedding-base_v1
+  MODULE_PATH: null
+  COLLECTION_NAME: mofa
+  IS_UPLOAD_FILE: true
+  CHROMA_PATH: ./data/output/chroma_store
+  FILES_PATH:
+    - ./data/output/arxiv_papers
+  ENCODING: utf-8
+  CHUNK_SIZE: 256
+  RAG_SEARCH_NUM: 5
+  RAG_MODEL_NAME: netease-youdao/bce-embedding-base_v1
+  RAG_MODEL_API_URL: https://api.siliconflow.cn/v1
+  RAG_MODEL_API_KEY:
+
+WEB:
+  WEB_ENABLE: false
+  SERPER_API_KEY:
+  SEARCH_NUM: 20
+  SEARCH_ENGINE_TIMEOUT: 5
+
+MODEL:
+  MODEL_API_KEY: sk-tzjaiwjjhlbpgmutvqsfkxjzbngmscfglzyzrgcltiyazveh
+  MODEL_NAME: deepseek-ai/DeepSeek-V2-Chat
+  MODEL_MAX_TOKENS: 2048
+  MODEL_API_URL: https://api.siliconflow.cn/v1/chat/completions
+#  MODEL_API_KEY:
+#  MODEL_NAME: gpt-4o-mini
+#  MODEL_MAX_TOKENS: 2048
+
+ENV:
+  PROXY_URL: null
+  AGENT_TYPE: reasoner
+
+LOG:
+  LOG_PATH: ./data/output/log/log.md
+  LOG_TYPE: markdown
+  LOG_STEP_NAME: reasoner_result
+  CHECK_LOG_PROMPT: true

@@ -1,0 +1,31 @@
+nodes:
+  - id: read_input
+    build: pip install -e ../../node-hub/read_input
+    path: read_input
+    outputs:
+      - resolve_results
+
+  - id: judge-agent
+    operator:
+      python: scripts/reasoner_agent.py
+      inputs:
+        task: read_input/resolve_results
+      outputs:
+        - planning_results
+    
+  - id: base_agent
+    operator:
+      python: scripts/base_agent.py
+      inputs:
+        task: read_input/resolve_results
+      outputs:
+        - base_results
+
+  - id: compare_agent
+    operator:
+      python: scripts/compare_agent.py
+      inputs:
+        task: read_input/resolve_results
+        base: base_agent/base_results
+      outputs:
+        - compare_results
